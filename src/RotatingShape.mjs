@@ -1,3 +1,5 @@
+import { textChangeRangeIsUnchanged } from "typescript";
+
 export class RotatingShape {
   shape;
 
@@ -15,6 +17,12 @@ export class RotatingShape {
 
   rotateRight() {
     this.shape = this.shape.map((line, y) => line.map((e, x) => this.shape[x][y]).reverse());
+    return this
+  }
+
+  rotateLeft() {
+    this.rotateRight()
+    this.rotateRight() 
     return this
   }
 
