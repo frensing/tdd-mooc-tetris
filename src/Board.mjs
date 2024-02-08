@@ -19,13 +19,17 @@ export class Board {
     }
     this.falling = true
 
-    this.board[this.fallingLoc.y][this.fallingLoc.x] = piece
+    this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
   }
 
   tick() {
-    this.board[this.fallingLoc.y][this.fallingLoc.x] = '.'
     this.fallingLoc.y += 1
-    this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
+    if (this.fallingLoc.y >= this.height) {
+      this.falling = false
+    } else {
+      this.board[this.fallingLoc.y - 1][this.fallingLoc.x] = '.'
+      this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
+    }
   }
 
   hasFalling() {
