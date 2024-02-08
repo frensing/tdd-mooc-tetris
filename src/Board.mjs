@@ -8,6 +8,10 @@ export class Board {
     this.board = Array.from(Array(height), _ => Array(width).fill('.'))
   }
 
+  drop(piece) {
+    this.board[0][Math.floor(this.width/2)] = piece
+  }
+
   toString() {
     return this.board.map(x => x.join('')).join('\n') + '\n';
   }
