@@ -9,11 +9,15 @@ export class Board {
   }
 
   drop(piece) {
+    if (this.hasFalling) {
+      throw('already falling')
+    }
     this.fallingPiece = piece
     this.fallingLoc = {
       x: Math.floor(this.width/2),
       y: 0
     }
+    this.hasFalling = true
 
     this.board[this.fallingLoc.y][this.fallingLoc.x] = piece
   }
