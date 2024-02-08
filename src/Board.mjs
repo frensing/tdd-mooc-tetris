@@ -24,7 +24,8 @@ export class Board {
 
   tick() {
     this.fallingLoc.y += 1
-    if (this.fallingLoc.y >= this.height) {
+    if (this.fallingLoc.y >= this.height || 
+        this.board[this.fallingLoc.y][this.fallingLoc.x] != '.') {
       this.falling = false
     } else {
       this.board[this.fallingLoc.y - 1][this.fallingLoc.x] = '.'
