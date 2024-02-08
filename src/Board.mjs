@@ -9,7 +9,7 @@ export class Board {
   }
 
   drop(piece) {
-    if (this.hasFalling) {
+    if (this.falling) {
       throw('already falling')
     }
     this.fallingPiece = piece
@@ -17,7 +17,7 @@ export class Board {
       x: Math.floor(this.width/2),
       y: 0
     }
-    this.hasFalling = true
+    this.falling = true
 
     this.board[this.fallingLoc.y][this.fallingLoc.x] = piece
   }
@@ -26,6 +26,10 @@ export class Board {
     this.board[this.fallingLoc.y][this.fallingLoc.x] = '.'
     this.fallingLoc.y += 1
     this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
+  }
+
+  hasFalling() {
+    return this.falling
   }
 
   toString() {
