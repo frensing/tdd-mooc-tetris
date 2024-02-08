@@ -9,7 +9,13 @@ export class Board {
   }
 
   drop(piece) {
-    this.board[0][Math.floor(this.width/2)] = piece
+    this.fallingPiece = piece
+    this.fallingLoc = {
+      x: Math.floor(this.width/2),
+      y: 0
+    }
+
+    this.board[this.fallingLoc.y][this.fallingLoc.x] = piece
   }
 
   toString() {
