@@ -14,14 +14,14 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    this.shape = this.shape.map((line, y) => line.map((e, x) => this.shape[x][y]).reverse());
-    return this
+    return new RotatingShape(this.shape.map((line, y) => line.map((e, x) => this.shape[x][y]).reverse()));
   }
 
   rotateLeft() {
-    this.rotateRight()
-    this.rotateRight() 
     return this
+      .rotateRight()
+      .rotateRight()
+      .rotateRight()
   }
 
   toString() {
