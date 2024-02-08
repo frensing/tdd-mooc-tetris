@@ -18,6 +18,12 @@ export class Board {
     this.board[this.fallingLoc.y][this.fallingLoc.x] = piece
   }
 
+  tick() {
+    this.board[this.fallingLoc.y][this.fallingLoc.x] = '.'
+    this.fallingLoc.y += 1
+    this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
+  }
+
   toString() {
     return this.board.map(x => x.join('')).join('\n') + '\n';
   }
