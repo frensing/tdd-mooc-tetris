@@ -12,14 +12,21 @@ export class Board {
     if (this.falling) {
       throw('already falling')
     }
+
+    piece = piece.toString().split("\n")
+
     this.fallingPiece = piece
     this.fallingLoc = {
-      x: Math.floor(this.width/2),
+      x: Math.floor(this.width/2 - piece[0].length + 1),
       y: 0
     }
     this.falling = true
 
-    this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
+    piece.forEach((line, y) => {
+      line.split('').forEach((e, x) => {
+        this.board[y][this.fallingLoc.x + x] = e
+      })
+    });
   }
 
   tick() {
