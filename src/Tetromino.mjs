@@ -22,6 +22,14 @@ export class Tetromino {
      ...`
   ), 4);
 
+  static I_SHAPE = Tetromino.createTetromino(RotatingShape.fromString(
+    `.....
+     .....
+     IIII.
+     .....
+     .....`
+  ), 2)
+
   rotateRight() {
     return new Tetromino([...this.shapes.slice(1), this.shapes[0]])
   }
