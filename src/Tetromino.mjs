@@ -30,6 +30,12 @@ export class Tetromino {
      .....`
   ), 2)
 
+  static O_SHAPE = Tetromino.createTetromino(RotatingShape.fromString(
+    `.OO
+     .OO
+     ...`
+  ), 1)
+
   rotateRight() {
     return new Tetromino([...this.shapes.slice(1), this.shapes[0]])
   }
