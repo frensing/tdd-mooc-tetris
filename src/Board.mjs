@@ -2,7 +2,6 @@ export class Board {
   width;
   height;
   fallingPiece;
-  fallingPieceArray;
 
   constructor(width, height) {
     this.width = width;
@@ -15,10 +14,9 @@ export class Board {
       throw('already falling')
     }
 
-    this.fallingPiece = piece
     piece = this.#toArray(piece)
 
-    this.fallingPieceArray = piece
+    this.fallingPiece = piece
     this.fallingLoc = {
       x: Math.floor(this.width/2 - piece[0].length + 1),
       y: 0
@@ -57,14 +55,14 @@ export class Board {
   tick() {
     if (!this.falling) { return }
 
-    this.#draw(this.fallingPieceArray, this.fallingLoc, true)
+    this.#draw(this.fallingPiece, this.fallingLoc, true)
     this.fallingLoc.y += 1
 
-    if (!this.#test(this.fallingPieceArray, this.fallingLoc)) {
+    if (!this.#test(this.fallingPiece, this.fallingLoc)) {
       this.falling = false
-      this.#draw(this.fallingPieceArray, {...this.fallingLoc, y: this.fallingLoc.y - 1}) // redraw piece
+      this.#draw(this.fallingPiece, {...this.fallingLoc, y: this.fallingLoc.y - 1}) // redraw piece
     } else {
-      this.#draw(this.fallingPieceArray, this.fallingLoc)
+      this.#draw(this.fallingPiece, this.fallingLoc)
     }
   }
 
