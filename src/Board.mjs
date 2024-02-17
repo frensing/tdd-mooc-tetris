@@ -38,14 +38,25 @@ export class Board {
     });
   }
 
+  #test(piece, loc) {
+    for (let y = 0; y < piece.length; y++) {
+      let line = piece[y]
+      if (line.every(x => x === '.')) { tcontinue }
+      for(let x = 0; x < line.length; x++) {
+        if (loc.y + y >= this.height) { return false } // below the field
+        if (line[x] != '.' && this.board[loc.y + y][loc.x + x] != '.') { return false } // hitting other piece
+      }
+    }
+    return true
+  }
+
   #toArray(piece) {
     return piece.toString().split('\n').map(line => line.split(''))
   }
 
   tick() {
     this.fallingLoc.y += 1
-    if (this.fallingLoc.y + this.fallingPieceArray.length > this.height || 
-        this.board[this.fallingLoc.y + this.fallingPieceArray.length -1][this.fallingLoc.x] != '.') {
+    if (!this.#test(this.fallingPieceArray, this.fallingLoc)) {
           this.falling = false
     } else {
       this.#draw(this.fallingPieceArray, {...this.fallingLoc, y: this.fallingLoc.y -1}, true)
