@@ -29,7 +29,6 @@ export class Board {
   }
 
   #draw(piece, loc, remove=false) {
-    console.log(loc, remove)
     piece.forEach((line, y) => {
       line.forEach((e, x) => {
         if (e != '.') {
