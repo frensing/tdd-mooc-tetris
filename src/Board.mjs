@@ -41,7 +41,7 @@ export class Board {
   #test(piece, loc) {
     for (let y = 0; y < piece.length; y++) {
       let line = piece[y]
-      if (line.every(x => x === '.')) { tcontinue }
+      if (line.every(x => x === '.')) { continue } // empty line in piece
       for(let x = 0; x < line.length; x++) {
         if (loc.y + y >= this.height) { return false } // below the field
         if (line[x] != '.' && this.board[loc.y + y][loc.x + x] != '.') { return false } // hitting other piece
