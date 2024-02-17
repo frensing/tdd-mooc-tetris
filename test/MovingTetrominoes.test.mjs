@@ -130,3 +130,41 @@ describe('Tetrominoes cannot move beyond the board', () => {
     expect(board.hasFalling(), "the tetromino should stop moving").to.be.false;
   })
 })
+
+describe('Tetrominoes cannot move through other blocks', () => {
+  let board
+  beforeEach(() => {
+    board = new Board(10, 6)
+    board.drop(Tetromino.I_SHAPE.rotateRight())
+    board.moveRight()
+    board.tick()
+    board.tick()
+    board.tick()
+  })
+
+  test('to the left', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.moveRight()
+    board.moveRight()
+    board.moveDown() // next to I
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ......T...
+       ....ITTT..
+       ....I.....
+       ....I.....
+       ....I.....`
+    )
+
+    board.moveLeft() // should not move
+    expect(board.toString()).to.equalShape(
+      `..........
+       ......T...
+       ....ITTT..
+       ....I.....
+       ....I.....
+       ....I.....`
+    )
+  })
+})
