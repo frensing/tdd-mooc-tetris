@@ -38,6 +38,10 @@ export class Board {
     this.#draw(this.fallingPiece, this.fallingLoc)
   }
 
+  moveDown() {
+    this.tick()
+  }
+
   #draw(piece, loc, remove=false) {
     piece.forEach((line, y) => {
       line.forEach((e, x) => {
