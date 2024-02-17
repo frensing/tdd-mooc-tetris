@@ -1,6 +1,8 @@
 export class Board {
   width;
   height;
+  fallingPiece;
+  fallingPieceArray;
 
   constructor(width, height) {
     this.width = width;
@@ -13,9 +15,10 @@ export class Board {
       throw('already falling')
     }
 
+    this.fallingPiece = piece
     piece = this.#toArray(piece)
 
-    this.fallingPiece = piece
+    this.fallingPieceArray = piece
     this.fallingLoc = {
       x: Math.floor(this.width/2 - piece[0].length + 1),
       y: 0
@@ -35,12 +38,12 @@ export class Board {
 
   tick() {
     this.fallingLoc.y += 1
-    if (this.fallingLoc.y + this.fallingPiece.length > this.height || 
-        this.board[this.fallingLoc.y + this.fallingPiece.length -1][this.fallingLoc.x] != '.') {
+    if (this.fallingLoc.y + this.fallingPieceArray.length > this.height || 
+        this.board[this.fallingLoc.y + this.fallingPieceArray.length -1][this.fallingLoc.x] != '.') {
           this.falling = false
     } else {
-      this.fallingPiece[0].forEach((_, x) => this.board[this.fallingLoc.y - 1][this.fallingLoc.x + x] = '.')
-      this.fallingPiece.forEach((line, y) => {
+      this.fallingPieceArray[0].forEach((_, x) => this.board[this.fallingLoc.y - 1][this.fallingLoc.x + x] = '.')
+      this.fallingPieceArray.forEach((line, y) => {
         line.forEach((e, x) => {
           this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = e
         })
