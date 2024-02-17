@@ -13,7 +13,7 @@ export class Board {
       throw('already falling')
     }
 
-    piece = piece.toString().split("\n")
+    piece = this.#toArray(piece)
 
     this.fallingPiece = piece
     this.fallingLoc = {
@@ -23,10 +23,14 @@ export class Board {
     this.falling = true
 
     piece.forEach((line, y) => {
-      line.split('').forEach((e, x) => {
+      line.forEach((e, x) => {
         this.board[y][this.fallingLoc.x + x] = e
       })
     });
+  }
+
+  #toArray(piece) {
+    return piece.toString().split('\n').map(line => line.split(''))
   }
 
   tick() {
@@ -35,9 +39,9 @@ export class Board {
         this.board[this.fallingLoc.y + this.fallingPiece.length -1][this.fallingLoc.x] != '.') {
           this.falling = false
     } else {
-      this.fallingPiece[0].split('').forEach((_, x) => this.board[this.fallingLoc.y - 1][this.fallingLoc.x + x] = '.')
+      this.fallingPiece[0].forEach((_, x) => this.board[this.fallingLoc.y - 1][this.fallingLoc.x + x] = '.')
       this.fallingPiece.forEach((line, y) => {
-        line.split('').forEach((e, x) => {
+        line.forEach((e, x) => {
           this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = e
         })
       });
