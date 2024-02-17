@@ -25,9 +25,15 @@ export class Board {
     }
     this.falling = true
 
+    this.#draw(piece, this.fallingLoc)
+  }
+
+  #draw(piece, loc) {
     piece.forEach((line, y) => {
       line.forEach((e, x) => {
-        this.board[y][this.fallingLoc.x + x] = e
+        if (e != '.') {
+          this.board[loc.y + y][loc.x + x] = e
+        }
       })
     });
   }
@@ -43,11 +49,7 @@ export class Board {
           this.falling = false
     } else {
       this.fallingPieceArray[0].forEach((_, x) => this.board[this.fallingLoc.y - 1][this.fallingLoc.x + x] = '.')
-      this.fallingPieceArray.forEach((line, y) => {
-        line.forEach((e, x) => {
-          this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = e
-        })
-      });
+      this.#draw(this.fallingPieceArray, this.fallingLoc)
     }
   }
 
