@@ -31,12 +31,16 @@ export class Board {
 
   tick() {
     this.fallingLoc.y += 1
-    if (this.fallingLoc.y >= this.height || 
-        this.board[this.fallingLoc.y][this.fallingLoc.x] != '.') {
-      this.falling = false
+    if (this.fallingLoc.y + this.fallingPiece.length > this.height || 
+        this.board[this.fallingLoc.y + this.fallingPiece.length -1][this.fallingLoc.x] != '.') {
+          this.falling = false
     } else {
-      this.board[this.fallingLoc.y - 1][this.fallingLoc.x] = '.'
-      this.board[this.fallingLoc.y][this.fallingLoc.x] = this.fallingPiece
+      this.fallingPiece[0].split('').forEach((_, x) => this.board[this.fallingLoc.y - 1][this.fallingLoc.x + x] = '.')
+      this.fallingPiece.forEach((line, y) => {
+        line.split('').forEach((e, x) => {
+          this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = e
+        })
+      });
     }
   }
 
