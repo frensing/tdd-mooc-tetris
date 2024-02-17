@@ -82,4 +82,30 @@ describe('Tetrominoes cannot move beyond the board', () => {
        ..........`
     )
   })
+
+  test('to the right', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight() // edge
+    expect(board.toString()).to.equalShape(
+      `........T.
+       .......TTT
+       ..........
+       ..........
+       ..........
+       ..........`
+    )
+
+    board.moveRight() // stop at edge
+    expect(board.toString()).to.equalShape(
+      `........T.
+       .......TTT
+       ..........
+       ..........
+       ..........
+       ..........`
+    )
+  })
 })

@@ -28,7 +28,7 @@ export class Board {
 
   moveLeft() {
     this.#draw(this.fallingPiece, this.fallingLoc, true)
-    if (this.#test(this.fallingPiece, {...this.fallingLoc, x: this.fallingLoc.x -1})) {
+    if (this.#test(this.fallingPiece, {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
       this.fallingLoc.x -= 1
     }
     this.#draw(this.fallingPiece, this.fallingLoc)
@@ -36,7 +36,9 @@ export class Board {
 
   moveRight() {
     this.#draw(this.fallingPiece, this.fallingLoc, true)
-    this.fallingLoc.x += 1
+    if (this.#test(this.fallingPiece, {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
+      this.fallingLoc.x += 1
+    }
     this.#draw(this.fallingPiece, this.fallingLoc)
   }
 
