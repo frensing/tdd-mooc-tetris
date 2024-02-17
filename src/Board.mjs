@@ -62,7 +62,7 @@ export class Board {
 
     if (!this.#test(this.fallingPieceArray, this.fallingLoc)) {
       this.falling = false
-      this.#draw(this.fallingPieceArray, {...this.fallingLoc, y: this.fallingLoc.y - 1})
+      this.#draw(this.fallingPieceArray, {...this.fallingLoc, y: this.fallingLoc.y - 1}) // redraw piece
     } else {
       this.#draw(this.fallingPieceArray, this.fallingLoc)
     }
