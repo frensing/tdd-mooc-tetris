@@ -32,6 +32,12 @@ export class Board {
     this.#draw(this.fallingPiece, this.fallingLoc)
   }
 
+  moveRight() {
+    this.#draw(this.fallingPiece, this.fallingLoc, true)
+    this.fallingLoc.x += 1
+    this.#draw(this.fallingPiece, this.fallingLoc)
+  }
+
   #draw(piece, loc, remove=false) {
     piece.forEach((line, y) => {
       line.forEach((e, x) => {
