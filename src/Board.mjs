@@ -29,6 +29,7 @@ export class Board {
   }
 
   #draw(piece, loc, remove=false) {
+    console.log(loc, remove)
     piece.forEach((line, y) => {
       line.forEach((e, x) => {
         if (e != '.') {
@@ -55,11 +56,15 @@ export class Board {
   }
 
   tick() {
+    if (!this.falling) { return }
+
+    this.#draw(this.fallingPieceArray, this.fallingLoc, true)
     this.fallingLoc.y += 1
+
     if (!this.#test(this.fallingPieceArray, this.fallingLoc)) {
-          this.falling = false
+      this.falling = false
+      this.#draw(this.fallingPieceArray, {...this.fallingLoc, y: this.fallingLoc.y - 1})
     } else {
-      this.#draw(this.fallingPieceArray, {...this.fallingLoc, y: this.fallingLoc.y -1}, true)
       this.#draw(this.fallingPieceArray, this.fallingLoc)
     }
   }
