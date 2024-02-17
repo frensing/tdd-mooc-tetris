@@ -108,4 +108,25 @@ describe('Tetrominoes cannot move beyond the board', () => {
        ..........`
     )
   })
+
+  test('to the bottom', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown() // bottom
+    expect(board.hasFalling(), "the tetromino should still be moving").to.be.true;
+    board.moveDown() // stop at bottom
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ....T.....
+       ...TTT....`
+    )
+
+    expect(board.hasFalling(), "the tetromino should stop moving").to.be.false;
+  })
 })
