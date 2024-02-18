@@ -14,16 +14,15 @@ export class Board {
       throw('already falling')
     }
 
-    piece = this.#toArray(piece)
-
-    this.fallingPiece = piece
+    this.piece = piece
+    this.fallingPiece = this.#toArray(piece)
     this.fallingLoc = {
-      x: Math.floor(this.width/2 - piece[0].length + 1),
+      x: Math.floor(this.width/2 - this.fallingPiece[0].length + 1),
       y: 0
     }
     this.falling = true
 
-    this.#draw(piece, this.fallingLoc)
+    this.#draw(this.fallingPiece, this.fallingLoc)
   }
 
   moveLeft() {
