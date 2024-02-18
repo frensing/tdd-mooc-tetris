@@ -22,7 +22,7 @@ export class Board {
     }
     this.falling = true
 
-    this.#draw(this.pieceArray, this.fallingLoc)
+    this.#draw()
   }
 
   moveLeft() {
@@ -30,7 +30,7 @@ export class Board {
     if (this.#test(this.pieceArray, {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
       this.fallingLoc.x -= 1
     }
-    this.#draw(this.pieceArray, this.fallingLoc)
+    this.#draw()
   }
 
   moveRight() {
@@ -38,7 +38,7 @@ export class Board {
     if (this.#test(this.pieceArray, {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
       this.fallingLoc.x += 1
     }
-    this.#draw(this.pieceArray, this.fallingLoc)
+    this.#draw()
   }
 
   moveDown() {
@@ -48,13 +48,13 @@ export class Board {
   rotateLeft() {
     this.#remove()
     this.#setPiece(this.piece.rotateLeft())
-    this.#draw(this.pieceArray, this.fallingLoc)
+    this.#draw()
   }
 
   rotateRight() {
     this.#remove()
     this.#setPiece(this.piece.rotateRight())
-    this.#draw(this.pieceArray, this.fallingLoc)
+    this.#draw()
   }
 
   #setPiece(piece) {
@@ -62,18 +62,18 @@ export class Board {
     this.pieceArray = this.#toArray(piece)
   }
 
-  #draw(piece, loc, remove=false) {
-    piece.forEach((line, y) => {
+  #draw(remove=false) {
+    this.pieceArray.forEach((line, y) => {
       line.forEach((e, x) => {
         if (e != '.') {
-          this.board[loc.y + y][loc.x + x] = !remove ? e : '.'
+          this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = !remove ? e : '.'
         }
       })
     });
   }
 
   #remove() {
-    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.#draw(true)
   }
 
   #test(piece, loc) {
@@ -99,11 +99,10 @@ export class Board {
     
     if (!this.#test(this.pieceArray, {...this.fallingLoc, y: this.fallingLoc.y + 1})) {
       this.falling = false
-      this.#draw(this.pieceArray, {...this.fallingLoc, y: this.fallingLoc.y}) // redraw piece
     } else {
       this.fallingLoc.y += 1
-      this.#draw(this.pieceArray, this.fallingLoc)
     }
+    this.#draw()
   }
 
   hasFalling() {
