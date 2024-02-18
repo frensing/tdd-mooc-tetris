@@ -53,6 +53,13 @@ export class Board {
     this.#draw(this.pieceArray, this.fallingLoc)
   }
 
+  rotateRight() {
+    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.piece = this.piece.rotateRight()
+    this.pieceArray = this.#toArray(this.piece)
+    this.#draw(this.pieceArray, this.fallingLoc)
+  }
+
   #draw(piece, loc, remove=false) {
     piece.forEach((line, y) => {
       line.forEach((e, x) => {
