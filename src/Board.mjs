@@ -27,7 +27,7 @@ export class Board {
   }
 
   moveLeft() {
-    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.#remove(this.pieceArray, this.fallingLoc)
     if (this.#test(this.pieceArray, {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
       this.fallingLoc.x -= 1
     }
@@ -35,7 +35,7 @@ export class Board {
   }
 
   moveRight() {
-    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.#remove(this.pieceArray, this.fallingLoc)
     if (this.#test(this.pieceArray, {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
       this.fallingLoc.x += 1
     }
@@ -47,14 +47,14 @@ export class Board {
   }
 
   rotateLeft() {
-    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.#remove(this.pieceArray, this.fallingLoc)
     this.piece = this.piece.rotateLeft()
     this.pieceArray = this.#toArray(this.piece)
     this.#draw(this.pieceArray, this.fallingLoc)
   }
 
   rotateRight() {
-    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.#remove(this.pieceArray, this.fallingLoc)
     this.piece = this.piece.rotateRight()
     this.pieceArray = this.#toArray(this.piece)
     this.#draw(this.pieceArray, this.fallingLoc)
@@ -68,6 +68,10 @@ export class Board {
         }
       })
     });
+  }
+
+  #remove(piece, loc) {
+    this.#draw(piece, loc, true)
   }
 
   #test(piece, loc) {
@@ -89,7 +93,7 @@ export class Board {
   tick() {
     if (!this.falling) { return }
 
-    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.#remove(this.pieceArray, this.fallingLoc)
     this.fallingLoc.y += 1
 
     if (!this.#test(this.pieceArray, this.fallingLoc)) {
