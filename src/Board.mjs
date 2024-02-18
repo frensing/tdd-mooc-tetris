@@ -96,12 +96,12 @@ export class Board {
     if (!this.falling) { return }
 
     this.#remove(this.pieceArray, this.fallingLoc)
-    this.fallingLoc.y += 1
-
-    if (!this.#test(this.pieceArray, this.fallingLoc)) {
+    
+    if (!this.#test(this.pieceArray, {...this.fallingLoc, y: this.fallingLoc.y + 1})) {
       this.falling = false
-      this.#draw(this.pieceArray, {...this.fallingLoc, y: this.fallingLoc.y - 1}) // redraw piece
+      this.#draw(this.pieceArray, {...this.fallingLoc, y: this.fallingLoc.y}) // redraw piece
     } else {
+      this.fallingLoc.y += 1
       this.#draw(this.pieceArray, this.fallingLoc)
     }
   }
