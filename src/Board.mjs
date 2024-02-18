@@ -15,8 +15,7 @@ export class Board {
       throw('already falling')
     }
 
-    this.piece = piece
-    this.pieceArray = this.#toArray(piece)
+    this.#setPiece(piece)
     this.fallingLoc = {
       x: Math.floor(this.width/2 - this.pieceArray[0].length + 1),
       y: 0
@@ -48,16 +47,19 @@ export class Board {
 
   rotateLeft() {
     this.#remove(this.pieceArray, this.fallingLoc)
-    this.piece = this.piece.rotateLeft()
-    this.pieceArray = this.#toArray(this.piece)
+    this.#setPiece(this.piece.rotateLeft())
     this.#draw(this.pieceArray, this.fallingLoc)
   }
 
   rotateRight() {
     this.#remove(this.pieceArray, this.fallingLoc)
-    this.piece = this.piece.rotateRight()
-    this.pieceArray = this.#toArray(this.piece)
+    this.#setPiece(this.piece.rotateRight())
     this.#draw(this.pieceArray, this.fallingLoc)
+  }
+
+  #setPiece(piece) {
+    this.piece = piece
+    this.pieceArray = this.#toArray(piece)
   }
 
   #draw(piece, loc, remove=false) {
