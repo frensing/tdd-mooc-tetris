@@ -1,6 +1,7 @@
 export class Board {
   width;
   height;
+  piece;
   pieceArray;
 
   constructor(width, height) {
@@ -43,6 +44,13 @@ export class Board {
 
   moveDown() {
     this.tick()
+  }
+
+  rotateLeft() {
+    this.#draw(this.pieceArray, this.fallingLoc, true)
+    this.piece = this.piece.rotateLeft()
+    this.pieceArray = this.#toArray(this.piece)
+    this.#draw(this.pieceArray, this.fallingLoc)
   }
 
   #draw(piece, loc, remove=false) {

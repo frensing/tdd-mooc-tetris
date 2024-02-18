@@ -9,7 +9,7 @@ describe('Falling Tetrominoes', () => {
     board = new Board(10, 6);
   });
 
-  test.skip('can be rotatated to the left', () => {
+  test('can be rotatated to the left', () => {
     board.drop(Tetromino.T_SHAPE);
     board.rotateLeft()
 
