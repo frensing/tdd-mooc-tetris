@@ -1,7 +1,7 @@
 export class Board {
   width;
   height;
-  fallingPiece;
+  pieceArray;
 
   constructor(width, height) {
     this.width = width;
@@ -15,30 +15,30 @@ export class Board {
     }
 
     this.piece = piece
-    this.fallingPiece = this.#toArray(piece)
+    this.pieceArray = this.#toArray(piece)
     this.fallingLoc = {
-      x: Math.floor(this.width/2 - this.fallingPiece[0].length + 1),
+      x: Math.floor(this.width/2 - this.pieceArray[0].length + 1),
       y: 0
     }
     this.falling = true
 
-    this.#draw(this.fallingPiece, this.fallingLoc)
+    this.#draw(this.pieceArray, this.fallingLoc)
   }
 
   moveLeft() {
-    this.#draw(this.fallingPiece, this.fallingLoc, true)
-    if (this.#test(this.fallingPiece, {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
+    this.#draw(this.pieceArray, this.fallingLoc, true)
+    if (this.#test(this.pieceArray, {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
       this.fallingLoc.x -= 1
     }
-    this.#draw(this.fallingPiece, this.fallingLoc)
+    this.#draw(this.pieceArray, this.fallingLoc)
   }
 
   moveRight() {
-    this.#draw(this.fallingPiece, this.fallingLoc, true)
-    if (this.#test(this.fallingPiece, {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
+    this.#draw(this.pieceArray, this.fallingLoc, true)
+    if (this.#test(this.pieceArray, {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
       this.fallingLoc.x += 1
     }
-    this.#draw(this.fallingPiece, this.fallingLoc)
+    this.#draw(this.pieceArray, this.fallingLoc)
   }
 
   moveDown() {
@@ -74,14 +74,14 @@ export class Board {
   tick() {
     if (!this.falling) { return }
 
-    this.#draw(this.fallingPiece, this.fallingLoc, true)
+    this.#draw(this.pieceArray, this.fallingLoc, true)
     this.fallingLoc.y += 1
 
-    if (!this.#test(this.fallingPiece, this.fallingLoc)) {
+    if (!this.#test(this.pieceArray, this.fallingLoc)) {
       this.falling = false
-      this.#draw(this.fallingPiece, {...this.fallingLoc, y: this.fallingLoc.y - 1}) // redraw piece
+      this.#draw(this.pieceArray, {...this.fallingLoc, y: this.fallingLoc.y - 1}) // redraw piece
     } else {
-      this.#draw(this.fallingPiece, this.fallingLoc)
+      this.#draw(this.pieceArray, this.fallingLoc)
     }
   }
 
