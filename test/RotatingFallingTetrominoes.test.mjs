@@ -173,4 +173,65 @@ describe('Wall Kicks', () => {
        ...T......`
     );
   })
+
+  test('when block against right wall, jump left (rotation right)', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateLeft()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+
+    expect(board.toString()).to.equalShape(
+      `.........T
+       ........TT
+       .........T
+       ...T......
+       ...TT.....
+       ...T......`
+    );
+
+    board.rotateRight() // wall kick
+
+    expect(board.toString()).to.equalShape(
+      `........T.
+       .......TTT
+       ..........
+       ...T......
+       ...TT.....
+       ...T......`
+    );
+  })
+
+  test('when block against left wall, jump right (rotation right)', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateRight()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveDown()
+    board.moveDown()
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       T.........
+       TT.T......
+       T..TT.....
+       ...T......`
+    );
+
+    board.rotateRight() // wall kick
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       TTTT......
+       .T.TT.....
+       ...T......`
+    );
+  })
 })

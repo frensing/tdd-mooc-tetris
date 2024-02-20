@@ -65,6 +65,14 @@ export class Board {
     this.#remove()
     if (this.#test(this.#toArray(this.piece.rotateRight()), this.fallingLoc)) {
       this.#setPiece(this.piece.rotateRight())
+    } else {
+      if (this.#test(this.#toArray(this.piece.rotateRight()), {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
+        this.fallingLoc.x -= 1
+        this.#setPiece(this.piece.rotateRight())
+      } else if (this.#test(this.#toArray(this.piece.rotateRight()), {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
+        this.fallingLoc.x += 1
+        this.#setPiece(this.piece.rotateRight())
+      }
     }
     this.#draw()
   }
