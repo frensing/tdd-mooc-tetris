@@ -97,3 +97,80 @@ describe('Tetromino cannot be rotated if no room to rotate', () => {
     );
   })
 })
+
+describe('Wall Kicks', () => {
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+
+    // setup obstacle
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight()
+    board.moveLeft()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+  });
+
+  test('when block against wall (right), jump left', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateLeft()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+
+    expect(board.toString()).to.equalShape(
+      `.........T
+       ........TT
+       .........T
+       ...T......
+       ...TT.....
+       ...T......`
+    );
+
+    board.rotateLeft() // wall kick
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       .......TTT
+       ........T.
+       ...T......
+       ...TT.....
+       ...T......`
+    );
+  })
+
+  test.skip('when block against wall (left), jump right', () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateRight()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveDown()
+    board.moveDown()
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       T.........
+       TT.T......
+       T..TT.....
+       ...T......`
+    );
+
+    board.rotateLeft() // wall kick
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       .T........
+       TTTT......
+       ...TT.....
+       ...T......`
+    );
+  })
+})
