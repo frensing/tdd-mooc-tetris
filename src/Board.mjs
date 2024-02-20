@@ -47,13 +47,17 @@ export class Board {
 
   rotateLeft() {
     this.#remove()
-    this.#setPiece(this.piece.rotateLeft())
+    if (this.#test(this.#toArray(this.piece.rotateLeft()), this.fallingLoc)) {
+      this.#setPiece(this.piece.rotateLeft())
+    }
     this.#draw()
   }
 
   rotateRight() {
     this.#remove()
-    this.#setPiece(this.piece.rotateRight())
+    if (this.#test(this.#toArray(this.piece.rotateRight()), this.fallingLoc)) {
+      this.#setPiece(this.piece.rotateRight())
+    }
     this.#draw()
   }
 

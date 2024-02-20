@@ -37,3 +37,63 @@ describe('Falling Tetrominoes', () => {
     );
   })
 })
+
+describe('Tetromino cannot be rotated if no room to rotate', () => {
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+
+    // setup obstacle
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+  });
+
+  test('no rotation left and right', () => {
+    // drop testpiece
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveDown()
+    board.moveDown()
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       .T........
+       TTT.......
+       .TTT......
+       ..T.......`
+    );
+    
+    board.rotateLeft() // expect no effect
+        
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       .T........
+       TTT.......
+       .TTT......
+       ..T.......`
+    );
+
+    board.rotateRight() // expect no effect
+        
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       .T........
+       TTT.......
+       .TTT......
+       ..T.......`
+    );
+  })
+})
