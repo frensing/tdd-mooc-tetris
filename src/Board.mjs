@@ -53,6 +53,9 @@ export class Board {
       if (this.#test(this.#toArray(this.piece.rotateLeft()), {...this.fallingLoc, x: this.fallingLoc.x - 1})) {
         this.fallingLoc.x -= 1
         this.#setPiece(this.piece.rotateLeft())
+      } else if (this.#test(this.#toArray(this.piece.rotateLeft()), {...this.fallingLoc, x: this.fallingLoc.x + 1})) {
+        this.fallingLoc.x += 1
+        this.#setPiece(this.piece.rotateLeft())
       }
     }
     this.#draw()

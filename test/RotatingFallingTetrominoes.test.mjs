@@ -113,7 +113,7 @@ describe('Wall Kicks', () => {
     board.moveDown()
   });
 
-  test('when block against wall (right), jump left', () => {
+  test('when block against right wall, jump left (rotation left)', () => {
     board.drop(Tetromino.T_SHAPE)
     board.rotateLeft()
     board.moveRight()
@@ -143,7 +143,7 @@ describe('Wall Kicks', () => {
     );
   })
 
-  test.skip('when block against wall (left), jump right', () => {
+  test('when block against left wall, jump right (rotation left)', () => {
     board.drop(Tetromino.T_SHAPE)
     board.rotateRight()
     board.moveLeft()
