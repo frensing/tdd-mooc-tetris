@@ -16,4 +16,15 @@ describe('Scoring', () => {
     scoring.scoreLineClearing(1)
     expect(scoring.getScore()).to.equal(40)
   })
+
+  test('score for multiple cleared lines', () => {
+    scoring.scoreLineClearing(2)
+    expect(scoring.getScore()).to.equal(100)
+
+    scoring.scoreLineClearing(3)
+    expect(scoring.getScore()).to.equal(100 + 300)
+
+    scoring.scoreLineClearing(4)
+    expect(scoring.getScore()).to.equal(100 + 300 + 1200)
+  })
 })
