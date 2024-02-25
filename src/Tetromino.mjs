@@ -23,12 +23,12 @@ export class Tetromino {
   ), 4);
 
   static I_SHAPE = new Tetromino([
-    `....\nIIII\n....\n....\n`,
-    `..I.\n..I.\n..I.\n..I.\n`
+    '....\nIIII\n....\n....\n',
+    '..I.\n..I.\n..I.\n..I.\n'
   ])
 
   static O_SHAPE = new Tetromino([
-    `....\n.OO.\n.OO.\n....\n`
+    '....\n.OO.\n.OO.\n....\n'
   ])
 
   rotateRight() {
