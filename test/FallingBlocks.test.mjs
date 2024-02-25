@@ -152,5 +152,26 @@ describe("Falling blocks", () => {
          ...`
       )
     })
+
+    test('leftovers fall x rows if x rows are cleared', () => {
+      board.setState(
+        `..I
+         ..T
+         ..T`
+      )
+      board.drop(`OO\nOO`)
+      board.moveDown()
+      expect(board.toString()).to.equalShape(
+        `..I
+         OOT
+         OOT`
+      )
+      board.tick()
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         ..I`
+      )
+    })
   })
 });
