@@ -27,11 +27,9 @@ export class Tetromino {
     `..I.\n..I.\n..I.\n..I.\n`
   ])
 
-  static O_SHAPE = Tetromino.createTetromino(RotatingShape.fromString(
-    `.OO
-     .OO
-     ...`
-  ), 1)
+  static O_SHAPE = new Tetromino([
+    `....\n.OO.\n.OO.\n....\n`
+  ])
 
   rotateRight() {
     return new Tetromino([...this.shapes.slice(1), this.shapes[0]])
