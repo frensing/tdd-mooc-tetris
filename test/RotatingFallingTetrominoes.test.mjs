@@ -112,8 +112,9 @@ describe('Wall Kicks', () => {
   });
 
   test('when block against right wall, jump left (rotation left)', () => {
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateLeft()
+    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.rotateRight()
+    board.moveDown()
     board.moveRight()
     board.moveRight()
     board.moveRight()
@@ -142,8 +143,8 @@ describe('Wall Kicks', () => {
   })
 
   test('when block against left wall, jump right (rotation left)', () => {
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateRight()
+    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.rotateLeft()
     board.moveLeft()
     board.moveLeft()
     board.moveLeft()
@@ -153,10 +154,10 @@ describe('Wall Kicks', () => {
 
     expect(board.toString()).to.equalShape(
       `..........
-       ..........
        T.........
-       TT.T......
-       T..TT.....
+       TT........
+       T..T......
+       ...TT.....
        ...T......`
     );
 
@@ -173,8 +174,8 @@ describe('Wall Kicks', () => {
   })
 
   test('when block against right wall, jump left (rotation right)', () => {
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateLeft()
+    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.rotateRight()
     board.moveRight()
     board.moveRight()
     board.moveRight()
@@ -182,9 +183,9 @@ describe('Wall Kicks', () => {
     board.moveRight()
 
     expect(board.toString()).to.equalShape(
-      `.........T
-       ........TT
+      `........TT
        .........T
+       ..........
        ...T......
        ...TT.....
        ...T......`
@@ -203,8 +204,9 @@ describe('Wall Kicks', () => {
   })
 
   test('when block against left wall, jump right (rotation right)', () => {
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateRight()
+    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.rotateLeft()
+    board.moveDown()
     board.moveLeft()
     board.moveLeft()
     board.moveLeft()
@@ -235,8 +237,9 @@ describe('Wall Kicks', () => {
 
   test('when block against other block', () => {
     // drop testpiece
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateLeft()
+    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.rotateRight()
+    board.moveDown()
     board.moveLeft()
     board.moveLeft()
     board.moveDown()
@@ -270,9 +273,9 @@ describe('Wall Kicks', () => {
     expect(board.toString()).to.equalShape(
       `..........
        ..........
-       .T........
-       TTTT......
-       ...TT.....
+       ..........
+       .T.T......
+       TTTTT.....
        ...T......`
     );
   })
