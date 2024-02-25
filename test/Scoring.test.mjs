@@ -1,6 +1,7 @@
-import { beforeEach, describe, test } from "vitest";
+import { beforeEach, describe, test, vi } from "vitest";
 import { expect } from "chai";
 import { Scoring } from "../src/Scoring.mjs";
+import { Board } from "../src/Board.mjs";
 
 describe('Scoring', () => {
   let scoring;
@@ -26,5 +27,38 @@ describe('Scoring', () => {
 
     scoring.scoreLineClearing(4)
     expect(scoring.getScore()).to.equal(100 + 300 + 1200)
+  })
+})
+
+describe('Board', () => {
+  let board
+  let mockScoring
+  let scoreSpy
+  beforeEach(() => {
+    board = new Board(3, 4)
+    board.setState(
+      `...
+       ..T
+       T.T
+       T.T`
+    )
+    board.drop('I\nI')
+    board.moveDown()
+    board.moveDown()
+
+    mockScoring = {
+      scoreLineClearing: lines => undefined
+    }
+    scoreSpy = vi.spyOn(mockScoring, 'scoreLineClearing')
+    board.setScoring(mockScoring)
+  })
+
+  test('is called when line is cleaned', () => {
+    expect(board.hasFalling()).to.be.true
+    expect(scoreSpy.mock.calls.length).to.equal(0)
+    board.tick()
+    expect(board.hasFalling()).to.be.false
+    expect(scoreSpy.mock.calls.length).to.equal(1)
+    expect(scoreSpy.mock.calls[0] == 2)
   })
 })

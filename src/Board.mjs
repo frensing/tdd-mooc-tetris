@@ -3,6 +3,7 @@ export class Board {
   height;
   piece;
   pieceArray;
+  scoring;
 
   constructor(width, height) {
     this.width = width;
@@ -83,6 +84,10 @@ export class Board {
     this.#draw()
   }
 
+  setScoring(scoring) {
+    this.scoring = scoring
+  }
+
   setState(board) {
     board = board.replaceAll(' ', '').split('\n').map(x => Array(...x))
     if (board.length != this.height || board.some(x => x.length != this.width)) {
@@ -141,12 +146,15 @@ export class Board {
   }
 
   #lineClear() {
+    let clearedLines = 0
     this.board.forEach((line, i) => {
       if (line.every(x => x != '.')) {
         this.board.splice(i, 1)
         this.board.unshift(Array(this.width).fill('.'))
+        clearedLines += 1
       }
     })
+    if (this.scoring && clearedLines) { this.scoring.scoreLineClearing(clearedLines) }
   }
 
   hasFalling() {
