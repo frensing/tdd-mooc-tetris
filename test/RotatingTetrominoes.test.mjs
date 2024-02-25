@@ -16,11 +16,10 @@ function distinctOrientations(shape) {
 }
 
 describe("The T shape", () => {
-  const shape = Tetromino.T_SHAPE;
-  const shape_arika = Tetromino.T_SHAPE_ARIKA
+  const shape = Tetromino.T_SHAPE_ARIKA
 
   test("initial orientation", () => {
-    expect(shape_arika.toString()).to.equalShape(
+    expect(shape.toString()).to.equalShape(
       `....
        TTT.
        .T..
@@ -29,7 +28,7 @@ describe("The T shape", () => {
   });
 
   test("can be rotated right/clockwise", () => {
-    expect(shape_arika.rotateRight().toString()).to.equalShape(
+    expect(shape.rotateRight().toString()).to.equalShape(
       `.T..
        TT..
        .T..
@@ -38,7 +37,7 @@ describe("The T shape", () => {
   });
 
   test("can be rotated left/counter-clockwise", () => {
-    expect(shape_arika.rotateLeft().toString()).to.equalShape(
+    expect(shape.rotateLeft().toString()).to.equalShape(
       `.T..
        .TT.
        .T..
@@ -47,7 +46,7 @@ describe("The T shape", () => {
   });
 
   test('has the 4th position', () => {
-    expect(shape_arika.rotateRight().rotateRight().toString()).to.equalShape(
+    expect(shape.rotateRight().rotateRight().toString()).to.equalShape(
       `....
        .T..
        TTT.

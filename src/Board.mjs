@@ -100,7 +100,7 @@ export class Board {
     this.pieceArray.forEach((line, y) => {
       line.forEach((e, x) => {
         if (e != '.') {
-          this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = !remove ? e : '.'
+          this.board[Math.max(this.fallingLoc.y + y, 0)][this.fallingLoc.x + x] = !remove ? e : '.'
         }
       })
     });
@@ -116,7 +116,7 @@ export class Board {
       if (line.every(x => x === '.')) { continue } // empty line in piece
       for(let x = 0; x < line.length; x++) {
         if (loc.y + y >= this.height) { return false } // below the field
-        if (line[x] != '.' && this.board[loc.y + y][loc.x + x] != '.') { return false } // hitting other piece
+        if (line[x] != '.' && this.board[Math.max(loc.y + y, 0)][loc.x + x] != '.') { return false } // hitting other piece
       }
     }
     return true
