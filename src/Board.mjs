@@ -17,10 +17,16 @@ export class Board {
 
     this.#setPiece(piece)
     this.fallingLoc = {
-      x: Math.floor(this.width/2 - this.pieceArray[0].length + 1),
+      x: Math.floor((this.width - this.pieceArray[0].length) / 2),
       y: 0
     }
     this.falling = true
+
+    for (let i = 0; i < this.pieceArray.length; i++) {
+      if (this.pieceArray[i].every(x => x === '.')) {
+        this.fallingLoc.y -= 1
+      } else { break }
+    }
 
     this.#draw()
   }
