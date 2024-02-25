@@ -11,4 +11,9 @@ describe('Scoring', () => {
   test('has initial score of 0', () => {
     expect(scoring.getScore()).to.equal(0)
   })
+
+  test('update score for one cleared line', () => {
+    scoring.scoreLineClearing(1)
+    expect(scoring.getScore()).to.equal(40)
+  })
 })
