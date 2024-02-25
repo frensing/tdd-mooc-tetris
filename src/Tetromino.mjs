@@ -30,6 +30,13 @@ export class Tetromino {
     '....\n.OO.\n.OO.\n....\n'
   ])
 
+  static L_SHAPE = new Tetromino([
+    '....\nLLL.\nL...\n....\n',
+    'LL..\n.L..\n.L..\n....\n',
+    '....\n..L.\nLLL.\n....\n',
+    '.L..\n.L..\n.LL.\n....\n'
+  ])
+
   rotateRight() {
     return new Tetromino([...this.shapes.slice(1), this.shapes[0]])
   }
