@@ -22,15 +22,7 @@ export class Tetromino {
      ...`
   ), 4);
 
-  static I_SHAPE = Tetromino.createTetromino(RotatingShape.fromString(
-    `.....
-     .....
-     IIII.
-     .....
-     .....`
-  ), 2)
-
-  static I_SHAPE_ARIKA = new Tetromino([
+  static I_SHAPE = new Tetromino([
     `....\nIIII\n....\n....\n`,
     `..I.\n..I.\n..I.\n..I.\n`
   ])
