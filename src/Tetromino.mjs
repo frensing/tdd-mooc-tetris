@@ -44,6 +44,11 @@ export class Tetromino {
     '.JJ.\n.J..\n.J..\n....\n'
   ])
 
+  static S_SHAPE = new Tetromino([
+    '....\n.SS.\nSS..\n....\n',
+    'S...\nSS..\n.S..\n....\n'
+  ])
+
   rotateRight() {
     return new Tetromino([...this.shapes.slice(1), this.shapes[0]])
   }
