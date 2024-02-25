@@ -131,5 +131,26 @@ describe("Falling blocks", () => {
          ...`
       )
     })
+
+    test('multiple lines are cleared if full', () => {
+      board.setState(
+        `...
+         ..T
+         ..T`
+      )
+      board.drop(`OO\nOO`)
+      board.moveDown()
+      expect(board.toString()).to.equalShape(
+        `...
+         OOT
+         OOT`
+      )
+      board.tick()
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         ...`
+      )
+    })
   })
 });
