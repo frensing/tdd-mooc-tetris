@@ -102,15 +102,14 @@ describe('Wall Kicks', () => {
   let board;
   beforeEach(() => {
     board = new Board(10, 6);
-
-    // setup obstacle
-    board.drop(Tetromino.T_SHAPE);
-    board.rotateRight()
-    board.moveLeft()
-    board.moveDown()
-    board.moveDown()
-    board.moveDown()
-    board.moveDown()
+    board.setState(
+      `..........
+       ..........
+       ..........
+       ...T......
+       ...TT.....
+       ...T......`
+    )
   });
 
   test('when block against right wall, jump left (rotation left)', () => {

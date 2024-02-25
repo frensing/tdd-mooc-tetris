@@ -135,11 +135,14 @@ describe('Tetrominoes cannot move through other blocks', () => {
   let board
   beforeEach(() => {
     board = new Board(10, 6)
-    board.drop(Tetromino.I_SHAPE.rotateRight())
-    board.moveRight()
-    board.tick()
-    board.tick()
-    board.tick()
+    board.setState(
+      `..........
+       ..........
+       ....I.....
+       ....I.....
+       ....I.....
+       ....I.....`
+    )
   })
 
   test('to the left', () => {

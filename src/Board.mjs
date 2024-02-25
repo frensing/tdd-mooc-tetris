@@ -77,6 +77,14 @@ export class Board {
     this.#draw()
   }
 
+  setState(board) {
+    board = board.replaceAll(' ', '').split('\n').map(x => Array(...x))
+    if (board.length != this.height || board.some(x => x.length != this.width)) {
+      throw('different board size!')
+    }
+    this.board = board
+  }
+
   #setPiece(piece) {
     this.piece = piece
     this.pieceArray = this.#toArray(piece)
