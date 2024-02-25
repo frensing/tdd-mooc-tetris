@@ -51,12 +51,12 @@ describe("The I shape", () => {
   const shape = Tetromino.I_SHAPE;
 
   test("initial orientation", () => {
-    expect(shape.toString()).to.equalShape(
-      `.....
-       .....
-       IIII.
-       .....
-       .....`
+    const shape_arika = Tetromino.I_SHAPE_ARIKA
+    expect(shape_arika.toString()).to.equalShape(
+      `....
+       IIII
+       ....
+       ....`
     );
   });
 

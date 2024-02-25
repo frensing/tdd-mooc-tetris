@@ -30,6 +30,11 @@ export class Tetromino {
      .....`
   ), 2)
 
+  static I_SHAPE_ARIKA = new Tetromino([
+    `....\nIIII\n....\n....\n`,
+    `..I.\n..I.\n..I.\n..I.\n`
+  ])
+
   static O_SHAPE = Tetromino.createTetromino(RotatingShape.fromString(
     `.OO
      .OO
