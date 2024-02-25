@@ -10,7 +10,7 @@ describe('Falling Tetrominoes', () => {
   });
 
   test('can be rotatated to the left', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA);
+    board.drop(Tetromino.T_SHAPE);
     board.rotateLeft()
 
     expect(board.toString()).to.equalShape(
@@ -24,7 +24,7 @@ describe('Falling Tetrominoes', () => {
   })
 
   test('can be rotatated to the right', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA);
+    board.drop(Tetromino.T_SHAPE);
     board.rotateRight()
 
     expect(board.toString()).to.equalShape(
@@ -54,7 +54,7 @@ describe('Tetromino cannot be rotated if no room to rotate', () => {
 
   test('no rotation left and right', () => {
     // drop testpiece
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.rotateRight()
     board.moveLeft()
     board.moveLeft()
@@ -112,7 +112,7 @@ describe('Wall Kicks', () => {
   });
 
   test('when block against right wall, jump left (rotation left)', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.rotateRight()
     board.moveDown()
     board.moveRight()
@@ -143,7 +143,7 @@ describe('Wall Kicks', () => {
   })
 
   test('when block against left wall, jump right (rotation left)', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.rotateLeft()
     board.moveLeft()
     board.moveLeft()
@@ -174,7 +174,7 @@ describe('Wall Kicks', () => {
   })
 
   test('when block against right wall, jump left (rotation right)', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.rotateRight()
     board.moveRight()
     board.moveRight()
@@ -204,7 +204,7 @@ describe('Wall Kicks', () => {
   })
 
   test('when block against left wall, jump right (rotation right)', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.rotateLeft()
     board.moveDown()
     board.moveLeft()
@@ -237,7 +237,7 @@ describe('Wall Kicks', () => {
 
   test('when block against other block', () => {
     // drop testpiece
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.rotateRight()
     board.moveDown()
     board.moveLeft()

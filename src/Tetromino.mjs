@@ -16,13 +16,7 @@ export class Tetromino {
     return new Tetromino(shapes)
   }
 
-  static T_SHAPE = Tetromino.createTetromino(RotatingShape.fromString(
-    `.T.
-     TTT
-     ...`
-  ), 4);
-
-  static T_SHAPE_ARIKA = new Tetromino([
+  static T_SHAPE = new Tetromino([
     '....\nTTT.\n.T..\n....\n',
     '.T..\nTT..\n.T..\n....\n',
     '....\n.T..\nTTT.\n....\n',

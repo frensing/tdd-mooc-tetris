@@ -10,7 +10,7 @@ describe('Tetrominoes move', () => {
   })
 
   test('to the left', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveLeft()
 
     expect(board.toString()).to.equalShape(
@@ -24,7 +24,7 @@ describe('Tetrominoes move', () => {
   })
 
   test('to the right', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveRight()
 
     expect(board.toString()).to.equalShape(
@@ -38,7 +38,7 @@ describe('Tetrominoes move', () => {
   })
 
   test('down', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveDown()
 
     expect(board.toString()).to.equalShape(
@@ -59,7 +59,7 @@ describe('Tetrominoes cannot move beyond the board', () => {
   })
 
   test('to the left', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveLeft()
     board.moveLeft()
     board.moveLeft() // edge
@@ -84,7 +84,7 @@ describe('Tetrominoes cannot move beyond the board', () => {
   })
 
   test('to the right', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveRight()
     board.moveRight()
     board.moveRight()
@@ -110,7 +110,7 @@ describe('Tetrominoes cannot move beyond the board', () => {
   })
 
   test('to the bottom', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveDown()
     board.moveDown()
     board.moveDown()
@@ -146,7 +146,7 @@ describe('Tetrominoes cannot move through other blocks', () => {
   })
 
   test('to the left', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveRight()
     board.moveRight()
     board.moveDown()
@@ -173,7 +173,7 @@ describe('Tetrominoes cannot move through other blocks', () => {
   })
 
   test('to the right', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.drop(Tetromino.T_SHAPE)
     board.moveLeft()
     board.moveLeft()
     board.moveDown()
@@ -200,7 +200,7 @@ describe('Tetrominoes cannot move through other blocks', () => {
   })
 
   test('to the bottom', () => {
-    board.drop(Tetromino.T_SHAPE_ARIKA) // above I
+    board.drop(Tetromino.T_SHAPE) // above I
 
     expect(board.toString()).to.equalShape(
       `...TTT....
