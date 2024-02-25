@@ -105,4 +105,31 @@ describe("Falling blocks", () => {
       expect(board.hasFalling(), "the block should stop moving").to.be.false;
     });
   });
+
+  describe('When a row is full', () => {
+    test('the bottom row is full its cleared', () => {
+      board.setState(
+        `...
+         ...
+         .TT`
+      )
+      board.drop('I')
+      board.moveLeft()
+      board.moveDown()
+      board.moveDown()
+
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         ITT`
+      )
+
+      board.tick()
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         ...`
+      )
+    })
+  })
 });

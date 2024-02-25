@@ -137,6 +137,16 @@ export class Board {
       this.fallingLoc.y += 1
     }
     this.#draw()
+    if (!this.hasFalling()) { this.#lineClear() }
+  }
+
+  #lineClear() {
+    this.board.forEach((line, i) => {
+      if (line.every(x => x != '.')) {
+        this.board.splice(i, 1)
+        this.board.unshift(Array(this.width).fill('.'))
+      }
+    })
   }
 
   hasFalling() {
