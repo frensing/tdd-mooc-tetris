@@ -47,7 +47,7 @@ describe('Board', () => {
     board.moveDown()
 
     mockScoring = {
-      scoreLineClearing: lines => undefined
+      scoreLineClearing: _ => undefined
     }
     scoreSpy = vi.spyOn(mockScoring, 'scoreLineClearing')
     board.setScoring(mockScoring)
