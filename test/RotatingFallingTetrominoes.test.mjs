@@ -54,12 +54,13 @@ describe('Tetromino cannot be rotated if no room to rotate', () => {
 
   test('no rotation left and right', () => {
     // drop testpiece
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateLeft()
+    board.drop(Tetromino.T_SHAPE_ARIKA)
+    board.rotateRight()
     board.moveLeft()
     board.moveLeft()
     board.moveLeft()
     board.moveLeft()
+    board.moveDown()
     board.moveDown()
     board.moveDown()
 
