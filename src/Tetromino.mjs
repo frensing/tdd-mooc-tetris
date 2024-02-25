@@ -49,6 +49,11 @@ export class Tetromino {
     'S...\nSS..\n.S..\n....\n'
   ])
 
+  static Z_SHAPE = new Tetromino([
+    '....\nZZ..\n.ZZ.\n....\n',
+    '..Z.\n.ZZ.\n.Z..\n....\n'
+  ])
+
   rotateRight() {
     return new Tetromino([...this.shapes.slice(1), this.shapes[0]])
   }
