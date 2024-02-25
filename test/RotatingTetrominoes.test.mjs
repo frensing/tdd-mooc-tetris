@@ -48,11 +48,10 @@ describe("The T shape", () => {
 });
 
 describe("The I shape", () => {
-  const shape = Tetromino.I_SHAPE;
+  const shape = Tetromino.I_SHAPE_ARIKA;
 
   test("initial orientation", () => {
-    const shape_arika = Tetromino.I_SHAPE_ARIKA
-    expect(shape_arika.toString()).to.equalShape(
+    expect(shape.toString()).to.equalShape(
       `....
        IIII
        ....
@@ -62,21 +61,19 @@ describe("The I shape", () => {
 
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
-      `..I..
-       ..I..
-       ..I..
-       ..I..
-       .....`
+      `..I.
+       ..I.
+       ..I.
+       ..I.`
     );
   });
 
   test("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
-      `..I..
-       ..I..
-       ..I..
-       ..I..
-       .....`
+      `..I.
+       ..I.
+       ..I.
+       ..I.`
     );
   });
 
