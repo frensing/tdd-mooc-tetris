@@ -99,8 +99,8 @@ export class Board {
   #draw(remove=false) {
     this.pieceArray.forEach((line, y) => {
       line.forEach((e, x) => {
-        if (e != '.') {
-          this.board[Math.max(this.fallingLoc.y + y, 0)][this.fallingLoc.x + x] = !remove ? e : '.'
+        if (e != '.' && this.fallingLoc.y + y >= 0) {
+          this.board[this.fallingLoc.y + y][this.fallingLoc.x + x] = !remove ? e : '.'
         }
       })
     });
