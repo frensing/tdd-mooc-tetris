@@ -22,6 +22,13 @@ export class Tetromino {
      ...`
   ), 4);
 
+  static T_SHAPE_ARIKA = new Tetromino([
+    '....\nTTT.\n.T..\n....\n',
+    '.T..\nTT..\n.T..\n....\n',
+    '....\n.T..\nTTT.\n....\n',
+    '.T..\n.TT.\n.T..\n....\n'
+  ])
+
   static I_SHAPE = new Tetromino([
     '....\nIIII\n....\n....\n',
     '..I.\n..I.\n..I.\n..I.\n'

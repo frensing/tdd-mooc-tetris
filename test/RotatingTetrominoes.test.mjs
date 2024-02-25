@@ -17,12 +17,14 @@ function distinctOrientations(shape) {
 
 describe("The T shape", () => {
   const shape = Tetromino.T_SHAPE;
+  const shape_arika = Tetromino.T_SHAPE_ARIKA
 
   test("initial orientation", () => {
-    expect(shape.toString()).to.equalShape(
-      `.T.
-       TTT
-       ...`
+    expect(shape_arika.toString()).to.equalShape(
+      `....
+       TTT.
+       .T..
+       ....`
     );
   });
 
