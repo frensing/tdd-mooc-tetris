@@ -14,7 +14,7 @@ export class Shufflebag {
   }
 
   getNext() {
-    this.pos++
+    this.pos = (this.pos + 1) % this.getSize()
     return this.bag[this.pos]
   }
 

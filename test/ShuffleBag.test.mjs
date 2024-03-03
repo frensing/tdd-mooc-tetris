@@ -42,4 +42,14 @@ describe('Random picking', () => {
     picks.sort()
     expect(picks.toString()).to.equal(items.toString())
   })
+
+  test('bag is refilled when emptied', () => {
+    const picks = Array.from(Array(items.length), () => shufflebag.getNext())
+    picks.sort()
+    const picks2 = Array.from(Array(items.length), () => shufflebag.getNext())
+    picks2.sort()
+
+    expect(picks.toString()).to.equal(items.toString())
+    expect(picks2.toString()).to.equal(items.toString())
+  })
 })
