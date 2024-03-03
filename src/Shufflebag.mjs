@@ -11,6 +11,10 @@ export class Shufflebag {
     }
   }
 
+  getNext() {
+    return this.bag[0]
+  }
+
   getSize() {
     return this.bag.length
   }

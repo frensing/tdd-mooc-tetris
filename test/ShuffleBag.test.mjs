@@ -21,8 +21,8 @@ describe('Filling the Shufflebag', () => {
     shufflebag.add('L', 3)
     expect(shufflebag.getSize()).to.equal(3)
   })
-
-  test.skip('can retrieve an element', () => {
+  
+  test('can retrieve an element', () => {
     shufflebag.add('T', 1)
     expect(shufflebag.getNext()).to.equal('T')
   })
