@@ -5,6 +5,10 @@ export class Shufflebag {
     this.bag = Array()
   }
 
+  add(element) {
+    this.bag.push(element)
+  }
+
   getSize() {
     return this.bag.length
   }

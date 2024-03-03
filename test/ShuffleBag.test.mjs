@@ -12,7 +12,7 @@ describe('Filling the Shufflebag', () => {
     expect(shufflebag.getSize()).to.equal(0)
   })
 
-  test.skip('can add one element', () => {
+  test('can add one element', () => {
     shufflebag.add('T')
     expect(shufflebag.getSize()).to.equal(1)
   })
