@@ -52,4 +52,12 @@ describe('Random picking', () => {
     expect(picks.toString()).to.equal(items.toString())
     expect(picks2.toString()).to.equal(items.toString())
   })
+
+  test('picking order is random', () => {
+    const picks = Array.from(Array(items.length), () => shufflebag.getNext())
+    const picksCopy = picks.map(e => e)
+    picks.sort()
+
+    expect(picks.toString()).not.equal(picksCopy.toString())
+  })
 })

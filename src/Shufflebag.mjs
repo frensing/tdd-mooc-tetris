@@ -11,11 +11,20 @@ export class Shufflebag {
     for(let i = 0; i < count; i++) {
       this.bag.push(element)
     }
+    this.pos = this.getSize() - 1
   }
 
   getNext() {
-    this.pos = (this.pos + 1) % this.getSize()
-    return this.bag[this.pos]
+    if (this.pos < 1) {
+      this.pos = this.getSize() - 1
+      return this.bag[0]
+    }
+    let nextPos = Math.floor(Math.random() * this.pos)
+    let nextItem = this.bag[nextPos]
+    this.bag[nextPos] = this.bag[this.pos]
+    this.bag[this.pos] = nextItem
+    this.pos--
+    return nextItem
   }
 
   getSize() {
