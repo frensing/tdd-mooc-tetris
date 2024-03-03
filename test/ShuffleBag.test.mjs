@@ -27,3 +27,19 @@ describe('Filling the Shufflebag', () => {
     expect(shufflebag.getNext()).to.equal('T')
   })
 })
+
+describe('Random picking', () => {
+  let shufflebag
+  const items = ['T', 'T', 'T', 'T', 'L', 'L', 'L', 'O', 'O'] // 4 * T, 3 * L, 2 * O
+  items.sort()
+  beforeEach(() => {
+    shufflebag = new Shufflebag()
+    items.forEach(e => shufflebag.add(e))
+  })
+
+  test('all elements are picked when emptying the bag', () => {
+    const picks = Array.from(Array(items.length), () => shufflebag.getNext())
+    picks.sort()
+    expect(picks.toString()).to.equal(items.toString())
+  })
+})

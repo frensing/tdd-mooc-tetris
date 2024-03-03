@@ -1,8 +1,10 @@
 export class Shufflebag {
   bag
+  pos
 
   constructor() {
     this.bag = Array()
+    this.pos = -1
   }
 
   add(element, count=1) {
@@ -12,7 +14,8 @@ export class Shufflebag {
   }
 
   getNext() {
-    return this.bag[0]
+    this.pos++
+    return this.bag[this.pos]
   }
 
   getSize() {
